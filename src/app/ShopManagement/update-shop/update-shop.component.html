@@ -1,0 +1,261 @@
+<div class="container">
+
+
+    <h4 class="mb-3">Dükkan Güncelleme</h4>
+    <form class="needs-validation" #shopUpdateForm="ngForm" (ngSubmit)="update(shopUpdateForm)" novalidate
+        autocomplete="off">
+        <div class="row form-group">
+    
+    
+    
+            <!-- baslık ekleme -->
+            <div class="col-md-6 mb-3">
+                 <label for="firstName">Başlık</label> 
+                <input type="text" class="form-control" name="title" id="title" #title="ngModel" [(ngModel)]="model.title"
+                    placeholder="Başlık Giriniz" value="{{shop.title}}" required>
+                <div *ngIf="title.invalid&&title.dirty" class="alert alert-warning"> Başlık gereklidir</div>
+            </div>
+    
+            <!-- fiyat ekleme -->
+            <div class="col-md-6 mb-3">
+                 <label for="firstName">Fiyat</label> 
+                <input type="number" class="form-control" name="price" id="price" #price="ngModel" [(ngModel)]="model.price"
+                    placeholder="Fiyat Giriniz" value="{{shop.price}}" required>
+                <div *ngIf="price.invalid&&price.dirty" class="alert alert-warning"> Fiyat gereklidir</div>
+            </div>
+    
+            <!-- Toplam Metrekare ekleme -->
+            <div class="col-md-6 mb-3">
+                <label for="firstName">Toplam Metrekare</label>
+                <input type="number" class="form-control" name="squaremeter" id="squaremeter" #squaremeter="ngModel"
+                    [(ngModel)]="model.squaremeter" placeholder="Toplam Metrekare Giriniz" value="{{shop.squaremeter}}"
+                    required>
+                <div *ngIf="squaremeter.invalid&&squaremeter.dirty" class="alert alert-warning"> Toplam
+                    Metrekare gereklidir</div>
+            </div>
+    
+    
+    
+            <!-- Kullanılabilir Metrekare ekleme -->
+            <div class="col-md-6 mb-3">
+                 <label for="firstName">Kullanılabilir Metrekare</label> 
+                <input type="number" class="form-control" name="squaremeterofgross" id="squaremeterofgross"
+                    #squaremeterofgross="ngModel" [(ngModel)]="model.squaremeterofgross"
+                    placeholder="Kullanılabilir Metrekare Giriniz" value="{{shop.squaremeterofgross}}" required>
+                <div *ngIf="squaremeterofgross.invalid&&squaremeterofgross.dirty" class="alert alert-warning">
+                    Kullanılabilir
+                    Metrekare gereklidir</div>
+            </div>
+    
+    
+            <!-- Isınma ekleme
+    <div class="col-md-6 mb-3">
+        <label for="firstName"> Isınma</label>
+        <input type="text" class="form-control" name="heating" id="heating" #heating="ngModel"
+            [(ngModel)]="model.heating" placeholder="Isınma Giriniz" value="" required>
+        <div *ngIf="heating.invalid&&heating.dirty" class="alert alert-warning">
+            Isınma gereklidir</div>
+    </div> -->
+    
+    
+            <div class="col-md-6 mb-3">
+                <label for="firstName"> Isınma</label>
+                <select class="form-control " #heating="ngModel" [(ngModel)]="model.heating"  name="heating"
+                    id="heating" placeholder="ısınma giriniz">
+
+                    
+                        <option  value="Kombi" [selected]="shop?.heating=='Kombi'">Kombi</option>
+                        <option value="Merkezi Sistem" [selected]="shop?.heating=='Merkezi Sistem'">Merkezi Sistem</option>
+                        <option value="Soba" [selected]="shop?.heating=='Soba'">Soba</option>
+                        <option value="Isıtma Yok" [selected]="shop?.heating=='Isıtma Yok'">Isıtma Yok</option>
+                       
+
+                    
+                    
+                </select>
+    
+            </div>
+    
+    
+            <!--  Aidat ekleme -->
+            <div class="col-md-6 mb-3">
+                 <label for="firstName"> Aidat</label> 
+                <input type="number" class="form-control" name="dues" id="dues" #dues="ngModel" [(ngModel)]="model.dues"
+                    placeholder="Aidat Giriniz" value="{{shop.dues}}" required>
+                <div *ngIf="dues.invalid&&dues.dirty" class="alert alert-warning">
+                    Aidat gereklidir</div>
+            </div>
+    
+    
+            <!--  Cephe ekleme -->
+            <div class="col-md-6 mb-3">
+                <label for="firstName"> Cephe</label> 
+                <input type="text" class="form-control" name="front" id="front" #front="ngModel" [(ngModel)]="model.front"
+                    placeholder="Cephe Giriniz" value="{{shop.front}}" required>
+                <div *ngIf="front.invalid&&front.dirty" class="alert alert-warning">
+                    Cephe gereklidir</div>
+            </div>
+    
+    
+    
+    
+    
+            <!-- Boyalımı ekleme
+    <div class="col-md-6 mb-3">
+        <label for="firstName"> Boyalı mı?</label>
+        <input type="text" class="form-control" name="whitewash" id="whitewash" #whitewash="ngModel"
+            [(ngModel)]="model.whitewash" placeholder="Boyalımı Giriniz" value="" required>
+        <div *ngIf="whitewash.invalid&&whitewash.dirty" class="alert alert-warning">
+            Boyalımı gereklidir</div>
+    </div> -->
+    
+            <!--  Boyalımı ekleme -->
+            <div class="col-md-6 mb-3">
+                <label for="firstName"> Boyalımı</label>
+                <select class="form-control " #whitewash="ngModel" [(ngModel)]="model.whitewash" required name="whitewash"
+                    id="whitewash">
+                    <option value="Evet" [selected]="shop?.whitewash=='Evet'">Evet</option>
+                    <option value="Hayır"[selected]="shop?.whitewash=='Hayır'">Hayır</option>
+                </select>
+            </div>
+    
+    
+    
+    
+    
+    
+            <!--  Katsayisi ekleme -->
+            <div class="col-md-6 mb-3">
+                <label for="firstName">Kat Sayısı</label>
+                <input type="number" class="form-control" name="numberOfFloor" id="numberOfFloor" #numberOfFloor="ngModel"
+                    [(ngModel)]="model.numberOfFloor" placeholder="Katsayısı Giriniz" value="{{shop.numberOfFloor}}"
+                    required>
+                <div *ngIf="numberOfFloor.invalid&&numberOfFloor.dirty" class="alert alert-warning">
+                    Kat sayısı gereklidir</div>
+            </div>
+    
+    
+            <!--  Bulungu kat ekleme -->
+            <div class="col-md-6 mb-3">
+                <label for="firstName"> Bulunduğu Kat</label>
+                <input type="number" class="form-control" name="floorLocation" id="floorLocation" #floorLocation="ngModel"
+                    [(ngModel)]="model.floorLocation" placeholder="Bulundugu Kat Giriniz" value="{{shop.floorLocation}}"
+                    required>
+                <div *ngIf="floorLocation.invalid&&floorLocation.dirty" class="alert alert-warning">
+                    Bulundugu Kat gereklidir</div>
+            </div>
+    
+    
+            <!-- Kredi  ekleme
+    <div class="col-md-6 mb-3">
+        <label for="firstName"> Krediye Uygun mu?</label>
+        <input type="text" class="form-control" name="credit" id="credit" #credit="ngModel"
+            [(ngModel)]="model.credit" placeholder="krediye uygun mu Giriniz" value="" required>
+        <div *ngIf="credit.invalid&&credit.dirty" class="alert alert-warning">
+            Krediye uygunmu gereklidir</div>
+    </div> -->
+    
+            <!--  Krediye uygun mu ekleme -->
+            <div class="col-md-6 mb-3">
+                <label for="firstName"> Krediye Ugun mu</label>
+                <select class="form-control " #credit="ngModel" [(ngModel)]="model.credit" required name="credit"
+                    id="credit">
+                    <option value="Evet"[selected]="shop?.credit=='Evet'">Evet</option>
+                    <option value="Hayır" [selected]="shop?.credit=='Hayır'">Hayır</option>
+                </select>
+            </div>
+    
+    
+    
+    
+    
+    
+            <!-- bigilendirme info  ekleme
+    <div class="col-md-6 mb-3">
+        <label for="firstName"> Bilgilendirme (INFO)</label>
+        <input type="text" class="form-control" name="INFO" id="INFO" #INFO="ngModel" [(ngModel)]="model.INFO"
+            placeholder="INFO Giriniz" value="" required>
+        <div *ngIf="INFO.invalid&&INFO.dirty" class="alert alert-warning">
+            INFO gereklidir</div>
+    </div> -->
+    
+    
+            <!-- bigilendirme info  ekleme -->
+            <div class="col-md-6 mb-3">
+                <label for="exampleFormControlTextarea2">Bilgilendirme</label>
+                <textarea class="form-control rounded-0" name="INFO" id="INFO" #INFO="ngModel" [(ngModel)]="model.INFO"
+                    placeholder="INFO Giriniz" value="{{shop.INFO}}" required rows="3" cols="100"></textarea>
+                <!-- <div *ngIf="INFO.invalid&&INFO.dirty" class="alert alert-warning">
+            INFO gereklidir</div> -->
+            </div>
+    
+    
+    
+    
+    
+            <!-- içerik  ekleme
+    <div class="col-md-6 mb-3">
+        <label for="firstName"> İçerik </label>
+        <input type="text" class="form-control" name="content" id="content" #content="ngModel"
+            [(ngModel)]="model.content" placeholder="content Giriniz" value="" required>
+        <div *ngIf="content.invalid&&content.dirty" class="alert alert-warning">
+            content gereklidir</div>
+    </div> -->
+    
+            <!-- bigilendirme info  ekleme
+            <div class="col-md-6 mb-3">
+                <label for="exampleFormControlTextarea2">İçerik</label>
+                <textarea class="form-control rounded-0" name="content" id="content" #content="ngModel"
+                    [(ngModel)]="model.content" placeholder="content Giriniz" value="{{shop.content}}" required rows="3"
+                    cols="100"></textarea>
+                 <div *ngIf="content.invalid&&content.dirty" class="alert alert-warning">
+            İçerik gereklidir</div>
+            </div>
+    
+     -->
+    
+            <!--   Resim  ekleme -->
+            <div class="col-md-6 mb-3">
+                <label for="firstName"> Resim </label>
+                <input type="text" class="form-control" name="image" id="image" #image="ngModel" [(ngModel)]="model.image"
+                    placeholder="image Giriniz" value="" required>
+                <div *ngIf="image.invalid&&image.dirty" class="alert alert-warning">
+                    image gereklidir</div>
+            </div>
+    
+            <!-- Yayınlanma tarihi-->
+            <div class="col-md-6 mb-3">
+                <label for="firstName"> Bina Yapılış Tarihi : </label> &nbsp;
+                &nbsp;&nbsp;&nbsp;
+                <mat-form-field>
+                    <input matInput [matDatepicker]="myDatePicker" class="form-control" name="listingDate" id="listingDate"
+                        #listingDate="ngModel" [(ngModel)]="model.listingDate" value="{{shop.listingDate}}" required>
+                    <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+                    <mat-datepicker #myDatePicker></mat-datepicker>
+                </mat-form-field>
+            </div>
+    
+            <!-- bigilendirme info  ekleme -->
+            <div class="col-md-10 mb-2">
+                <label for="exampleFormControlTextarea2">Adres</label>
+                <textarea class="form-control rounded-0" name="location" id="location" #location="ngModel"
+                    [(ngModel)]="model.location" placeholder="location Giriniz" value="{{shop.location}}" required rows="3"
+                    cols="100"></textarea>
+                <!-- <div *ngIf="content.invalid&&content.dirty" class="alert alert-warning">
+            İçerik gereklidir</div> -->
+            </div>
+    
+    
+    
+        </div>
+
+        <button class="btn btn-warning btn-lg btn-block" type="submit">Dükkan
+            Güncelle</button>
+            
+    </form>
+    <br><br><br><br>
+
+
+
+
+</div>

@@ -1,0 +1,116 @@
+<div class="container">
+    <!-- ev ekle modal  -->
+    <!-- <h4 class="mb-3">Genel Bilgiler</h4> -->
+    <form class="needs-validation" #landAddForm="ngForm" (ngSubmit)="add(landAddForm)" novalidate autocomplete="off">
+        <div class="row form-group">
+        </div>
+
+
+        <!-- baslık ekleme -->
+        <div class="col-md-6 mb-3">
+            <label for="firstName">Başlık</label>
+            <input type="text" class="form-control" name="title" id="title" #title="ngModel" [(ngModel)]="model.title"
+                placeholder="Başlık giriniz" value="" required>
+            <div *ngIf="title.invalid&&title.dirty" class="alert alert-warning"> Başlık gereklidir</div>
+        </div>
+
+
+
+        <!-- metrekare ekleme -->
+        <div class="col-md-6 mb-3">
+            <label for="firstName">Metrekare</label>
+            <input type="text" class="form-control" name="squaremeter" id="squaremeter" #squaremeter="ngModel"
+                [(ngModel)]="model.squaremeter" placeholder="Metrekare giriniz" value="" required>
+            <div *ngIf="squaremeter.invalid&&squaremeter.dirty" class="alert alert-warning"> Zorunlu Alan
+            </div>
+        </div>
+
+        <!-- fiyat ekleme -->
+        <div class="col-md-6 mb-3">
+            <label for="firstName">Fiyat</label>
+            <input type="text" class="form-control" name="price" id="price" #price="ngModel" [(ngModel)]="model.price"
+                placeholder="Fiyat giriniz " value="" required>
+            <div *ngIf="price.invalid&&price.dirty" class="alert alert-warning">Zorunlu Alan </div>
+        </div>
+
+
+        <!-- Eğim ekleme -->
+        <div class="col-md-6 mb-3">
+            <label for="firstName">Eğim</label>
+            <input type="text" class="form-control" name="slope" id="slope" #slope="ngModel" [(ngModel)]="model.slope"
+                placeholder=" Eğim giriniz" value="" required>
+            <div *ngIf="slope.invalid&&slope.dirty" class="alert alert-warning"> slope gereklidir</div>
+        </div>
+
+
+        <!-- Adres  ekleme -->
+        <div class="col-md-10 mb-2">
+            <label for="exampleFormControlTextarea2">Adres</label>
+            <textarea class="form-control rounded-0" name="location" id="location" #location="ngModel"
+                [(ngModel)]="model.location" placeholder="Adres Giriniz giriniz" value="" required rows="3"
+                cols="100"></textarea>
+            <!-- <div *ngIf="content.invalid&&content.dirty" class="alert alert-warning">
+                    İçerik gereklidir</div> -->
+        </div>
+
+
+        <!--  İmar uygun mu ekleme -->
+        <div class="col-md-6 mb-3">
+            <label for="firstName"> İmar'a Uygun mu?</label>
+            <select class="form-control " #reconstruction="ngModel" [(ngModel)]="model.reconstruction" required
+                name="reconstruction" id="reconstruction">
+                <option value="Evet">Evet</option>
+                <option value="Hayır">Hayır</option>
+            </select>
+        </div>
+
+
+        <!--  ekilebilir mi?  -->
+        <div class="col-md-6 mb-3">
+            <label for="firstName"> Ekilebilir mi? </label>
+            <select class="form-control " #sowing="ngModel" [(ngModel)]="model.sowing" required name="sowing"
+                id="sowing">
+                <option value="Evet">Evet</option>
+                <option value="Hayır">Hayır</option>
+            </select>
+        </div>
+
+
+        <!-- Yola uzaklık -->
+        <div class="col-md-6 mb-3">
+            <label for="firstName">Yola Uzaklık</label>
+            <input type="text" class="form-control" name="road" id="road" #road="ngModel" [(ngModel)]="model.road"
+                placeholder="Yola Uzaklık giriniz" value="" required>
+            <div *ngIf="road.invalid&&road.dirty" class="alert alert-warning"> road gereklidir</div>
+        </div>
+
+
+        <!-- INFO  ekleme -->
+        <div class="col-md-10 mb-2">
+            <label for="exampleFormControlTextarea2">Bigilendirme</label>
+            <textarea class="form-control rounded-0" name="INFO" id="INFO" #INFO="ngModel" [(ngModel)]="model.INFO"
+                placeholder="Bilgilendirme giriniz" value="" required rows="3" cols="100"></textarea>
+            <!-- <div *ngIf="content.invalid&&content.dirty" class="alert alert-warning">
+            İçerik gereklidir</div> -->
+        </div>
+
+
+        <!--   Resim  ekleme -->
+        <div class="col-md-6 mb-3">
+            <label for="firstName"> Resim </label>
+            <input type="text" class="form-control" name="image" id="image" #image="ngModel" [(ngModel)]="model.image"
+                placeholder="Resim giriniz (link ile ekleme yapılabiliyor şimdilik)" value="" required>
+            <div *ngIf="image.invalid&&image.dirty" class="alert alert-warning">
+                image gereklidir</div>
+        </div>
+
+
+
+
+
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="landAddForm.invalid">Arsa
+            Ekle</button>
+    </form>
+
+</div>

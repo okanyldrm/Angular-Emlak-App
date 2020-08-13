@@ -1,0 +1,12 @@
+mat-button-toggle-group {
+    margin-left: 12px;
+  }
+
+  .md-datepicker-calendar-pane {
+    z-index: 1200;
+}
+
+.cdk-overlay-container { 
+  z-index: 1200; 
+}
+

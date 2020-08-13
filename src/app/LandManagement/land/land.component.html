@@ -1,0 +1,81 @@
+<div class="container">
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Arsalar</h1>
+            <p class="lead">Arsalar hakıında biligleri içerir. Giriş yapılarak yönetimi sağlanır. İstenilen aramalar
+                yapılabilir.</p>
+        </div>
+    </div>
+    <br>
+
+    <div class="form-group container-fluid">
+        <div class="row">
+            <div class="col-md-5">
+                <h2>Arama</h2>
+                <input class="form-control" id="landTitle" placeholder="Başlık Arama" [(ngModel)]="filterTitle">
+                <input class="form-control" id="landSquaremeter" placeholder="Metrekare Arama"[(ngModel)]="filterSquaremeter">
+                <select class="form-control " [(ngModel)]="filterReconstruction" required name="filterReconstruction" id="filterReconstruction">
+                    <option value="" disabled selected>İmara Açık mı?</option>
+                    <option value="">Hepsi</option>
+                    <option value="Evet">Evet</option>
+                    <option value="Hayır">Hayır</option>
+                </select>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-10">
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-success" routerLink="addland">
+                <!-- data-target="#shopadd" data-toggle="modal" -->
+                EKLE
+            </button>
+        </div>
+    </div>
+    <br>
+
+
+    <table class="table css-serial">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">NO</th>
+                <th scope="col">Başlık</th>
+                <th scope="col">Yol Mesafesi</th>
+                <th scope="col">İmar</th>
+                <th scope="col">Fiyat</th>
+                <th scope="col">Operasyon</th>
+
+
+            </tr>
+        </thead>
+        <tbody *ngFor="let land of lands
+        | landFilterTitle:filterTitle 
+        | landFilterSquaremeter:filterSquaremeter
+        | landFilterReconstruction:filterReconstruction
+        ">
+            <tr>
+                <td></td>
+                <td>{{land.title}}</td>
+                <td>{{land.road}}</td>
+                <td>{{land.reconstruction}}</td>
+                
+                <td>{{land.price}}</td>
+                <td><a href="" routerLink="landdetail/{{land.id}}"><button type="button"
+                            class="btn btn-primary">Detay</button></a> &nbsp;
+                    <a href="" routerLink="landupdate/{{land.id}}"><button type="button"
+                            class="btn btn-warning">Güncelle</button></a>&nbsp;
+                    <a href="" routerLink="landdelete/{{land.id}}"><button type="button"
+                            class="btn btn-danger">Sil</button></a></td>
+
+
+            </tr>
+        </tbody>
+    </table>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</div>
